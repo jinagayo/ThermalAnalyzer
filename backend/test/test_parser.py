@@ -5,7 +5,7 @@ from pathlib import Path
 from tmx.reader import TMXReader 
 
 CURRENT_DIR = Path(__file__).resolve().parent
-TMX_PATH = CURRENT_DIR / "PTP_N16_1PULSE_1.tmx"
+TMX_PATH = CURRENT_DIR / "HGW_01.tmx"
 
 # 파일 읽기와 헤더 분석은 여기서 한 번만 수행 
 tmx = TMXReader(TMX_PATH)
