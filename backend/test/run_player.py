@@ -1,3 +1,13 @@
+"""
+파일 열기 
+-> 첫 프레임 렌더링
+-> 애니메이션 실행
+-> 종료 
+
+run_player.py -> TMXReader로 직접 재생한다.
+
+"""
+
 from pathlib import Path
 
 import matplotlib.pyplot as plt 
@@ -51,44 +61,6 @@ first_image, first_info = frame_to_image(
 
 # PIL Image를 matplotlib 에서 사용할 Numpy RGB 배열로 변환
 first_rgb = np.asarray(first_image)
-
-print("\n첫 번째 프레임 검사")
-print(f"온도 배열 shape: {first_temperature.shape}")
-print(f"온도 배열 dtype: {first_temperature.dtype}")
-print(f"최저 온도: {first_info['c_min']:.2f} °C")
-print(f"최고 온도: {first_info['c_max']:.2f} °C")
-print(f"RGB 배열 shape: {first_rgb.shape}")
-print(f"RGB 배열 dtype: {first_rgb.dtype}")
-print(f"RGB 값 범위: {first_rgb.min()} ~ {first_rgb.max()}")
-
-# --------------------------------------------------
-# 출력 결과 자동 검사
-# --------------------------------------------------
-
-expected_temperature_shape = (tmx.height, tmx.width)
-expected_rgb_shape = (tmx.height, tmx.width, 3)
-
-if first_temperature.shape != expected_temperature_shape:
-    raise ValueError(
-        "온도 배열 크기가 올바르지 않습니다. "
-        f"예상: {expected_temperature_shape}, "
-        f"실제: {first_temperature.shape}"
-    )
-
-if first_rgb.shape != expected_rgb_shape:
-    raise ValueError(
-        "RGB 이미지 크기가 올바르지 않습니다. "
-        f"예상: {expected_rgb_shape}, "
-        f"실제: {first_rgb.shape}"
-    )
-
-if first_rgb.dtype != np.uint8:
-    raise TypeError(
-        "RGB 이미지 dtype이 uint8이 아닙니다. "
-        f"현재 dtype: {first_rgb.dtype}"
-    )
-
-print("\n렌더링 기본 검사 통과")
 
 
 # --------------------------------------------------
