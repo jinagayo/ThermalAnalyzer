@@ -80,11 +80,13 @@ def load_cached_frame(
     )
 
 
-# Electron에서 tmx 파일 선택 후 호출하는 대표 함수
+
+
+# Electron에서 TMX 파일 선택 후 호출하는 대표 함수
 def prepare_tmx(
-        file_path : str | Path,
-        cache_root : str | Path
-) -> dict[str, Any] :
+        file_path: str | Path,
+        cache_root: str | Path
+) -> dict[str, Any]:
 
     path = Path(file_path)
     root = Path(cache_root)
@@ -110,8 +112,7 @@ def prepare_tmx(
     )
 
     return {
-        "success": True,
-        "metadata": metadata,
+        **metadata,
         "cache_path": str(
             get_cache_path(
                 path,
@@ -123,5 +124,5 @@ def prepare_tmx(
                 path,
                 root
             ).resolve()
-        )
+        ),
     }
